@@ -121,10 +121,10 @@ void loop() {                     //BALANCE CODE ONLY
   PID_control(7.4,0.42,0.4);  //adjust your own tuning based on your model :) pid(kp,ki,d) first tune kp then kd & "tune ki only if u need it"  
   
   if(e>0)
-   ccw(pwm);
+   cw(pwm);
     
   else 
-   cw(-pwm);
+   ccw(-pwm);
 
 
 }
