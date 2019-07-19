@@ -107,8 +107,7 @@ DDRB|= B00001110;
 
 void loop() {                     //BALANCE CODE ONLY 
    
-  /*  Dear matrexn3 :D 
-   *  1- first check cw & ccw functions by writing it only in void loop then make other codes below as comments 
+  /*  1- first check cw & ccw functions by writing it only in void loop then make other codes below as comments 
    *  2- second check imuu() functions & make sure that this variable (ypr[1] * 180/M_PI) belongs to the angle that changes with forward & backward direction 
    *  3- third check that when the error > 0 that the function cw() is the right function to decrease this error & make it reaching 0 otherwise you can change it to ccw(pwm) & make the function below else cw(pwm)
    *  4- finally check the hole code as below & u can see the serial plotter which u can see what happens to your curve of your PID control ^_^
@@ -120,35 +119,27 @@ void loop() {                     //BALANCE CODE ONLY
   Serial.println(ypr[1] * 180/M_PI);
   PID_control(7.4,0.42,0.4);  //adjust your own tuning based on your model :) pid(kp,ki,d) first tune kp then kd & "tune ki only if u need it"  
   
-  if(e>0)
-   cw(pwm);
-    
-  else 
-   ccw(-pwm);
-
+  if(e>0) cw(pwm);
+  else ccw(-pwm);
 
 }
 
 
 //////////////////////////////////////////////////////////////////////
 void PID_control(float kp,float ki,float kd)
-{
-  e=ref-ypr[1] * 180/M_PI; 
- P=kp*e;
- E=e+e_old;
- e_dot=e-e_old;
- I=ki*E;
- D=kd*e_dot;
- pwm=P+I+D;
- e_old=e;
- if(pwm>255)
- {
-  pwm=255;
- }
- if(pwm<-255)
- {
-  pwm=-255;
- }
+    {
+        e=ref-ypr[1] * 180/M_PI; 
+        P=kp*e;
+        E=e+e_old;
+        e_dot=e-e_old;
+        I=ki*E;
+        D=kd*e_dot;
+        pwm=P+I+D;
+        e_old=e;
+    
+ if(pwm>255){pwm=255;}
+ if(pwm<-255){pwm=-255;}
+    
 }
 /////////////////////////////////////////////////////////////////////////
 void imuu()
