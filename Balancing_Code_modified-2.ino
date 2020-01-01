@@ -107,7 +107,7 @@ DDRB|= B00001110;
 
 void loop() {                     //BALANCE CODE ONLY 
    
-  /*  Dear matrexn3 :D 
+  /*  
    *  1- first check cw & ccw functions by writing it only in void loop then make other codes below as comments 
    *  2- second check imuu() functions & make sure that this variable (ypr[1] * 180/M_PI) belongs to the angle that changes with forward & backward direction 
    *  3- third check that when the error > 0 that the function cw() is the right function to decrease this error & make it reaching 0 otherwise you can change it to ccw(pwm) & make the function below else cw(pwm)
